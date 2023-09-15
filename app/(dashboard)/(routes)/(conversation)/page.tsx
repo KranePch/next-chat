@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import * as z from "zod";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, MessagesSquare } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
@@ -19,6 +19,7 @@ import { Loader } from "@/components/loader";
 import { formSchema } from "./constants";
 import { UserAvatar } from "@/components/user-avatar";
 import { BotAvatar } from "@/components/bot-avatar";
+import { FileAttachment } from "@/components/file-attachment";
 
 
 
@@ -135,6 +136,9 @@ const ConversationPage = () => {
                                 <p className="text-sm">
                                     {message.message}
                                 </p>
+
+                                {message.file_attachment && message.file_attachment !== '' ? <FileAttachment /> : null}
+                                {/* {message.file_attachment && message.file_attachment === '' ? <FileAttachment /> : <></>} */}
                             </div>
                         ))}
                     </div>
